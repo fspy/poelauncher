@@ -5,26 +5,24 @@ use std::path::PathBuf;
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
 pub struct Cli {
-    /// do the thing
     #[command(subcommand)]
     pub command: Commands,
 }
 
 #[derive(Debug, Subcommand)]
 pub enum Commands {
-    /// list launchers
     List,
-    /// add new launcher
     Add {
         name: String,
         path: PathBuf,
         args: Vec<String>,
     },
-    /// remove launcher by index
-    Remove { index: usize },
-    /// set game path (or steam)
-    Game { path: String },
-    /// run programs & game
+    Remove {
+        index: usize,
+    },
+    Game {
+        path: String,
+    },
     Run,
 }
 

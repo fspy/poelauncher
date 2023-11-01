@@ -4,8 +4,8 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-clap = { version = "4.1.7", features = ["derive"] }
-sysinfo = "0.28.0"
+clap = { version = "4.3.22", features = ["derive"] }
+sysinfo = "0.29.8"
 
 [dependencies.confy]
 version = "0.5.1"

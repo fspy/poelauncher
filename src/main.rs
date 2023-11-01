@@ -2,6 +2,7 @@ pub mod cli;
 
 use serde::{Deserialize, Serialize};
 use std::os::windows::process::CommandExt;
+use std::path::Path;
 use std::path::PathBuf;
 use std::process::{Command, Stdio};
 use sysinfo::{ProcessExt, System, SystemExt};
@@ -85,7 +86,7 @@ impl PoELauncherConfig {
                 .creation_flags(0x00000008)
                 .args(&i.args)
                 .spawn()
-                .expect(&format!("failed to run {}", i.name));
+                .unwrap_or_else(|_| panic!("Failed to run {}", i.name));
         }
     }
 
@@ -101,7 +102,7 @@ impl PoELauncherConfig {
     }
 }
 
-fn is_process_running(sysinfo: &mut System, path: &PathBuf) -> bool {
+fn is_process_running(sysinfo: &mut System, path: &Path) -> bool {
     let strpath = path.file_name().expect("invalid path");
 
     sysinfo.refresh_processes();
