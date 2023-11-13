@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+	font-family: 'Gabarito';
+	src: url('/Gabarito-Regular.ttf') format('truetype');
+}
+
+@layer base {
+	:root {
+		background-color: theme(colors.black);
+		color: theme(colors.zinc.100);
+	}
+}
+
+@layer components {
+	.a-btn {
+		@apply inline-block rounded bg-slate-700 px-4 py-2 text-xs font-bold text-slate-200 hover:bg-slate-600;
+	}
+}
+
+@layer utilities {
+	.item-short-text {
+		@apply whitespace-nowrap max-w-[35ch] overflow-hidden overflow-ellipsis;
+	}
+
+	.button-green {
+		@apply bg-emerald-400 hover:bg-emerald-300 text-zinc-700 font-bold py-2 px-8 rounded;
+	}
+
+	.form-input {
+		@apply bg-zinc-300 appearance-none border-2 border-emerald-800 rounded w-full py-2 px-4 text-zinc-700 leading-tight focus:outline-none focus:bg-zinc-200 focus:border-emerald-400;
+	}
+
+	.form-validation {
+		@apply text-red-500 text-xs italic min-h-[theme(spacing.4)];
+	}
+}
